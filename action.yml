@@ -33,19 +33,19 @@ runs:
     # Setup Node things
     - name: Setup pnpm
       uses: pnpm/action-setup@v2.2.2
-      if: ${{ inputs.setup-node }}
+      if: ${{ inputs.setup-node == 'true' }}
       with:
         version: 7.2.1
 
     - name: Setup Node.js
       uses: actions/setup-node@v2
-      if: ${{ inputs.setup-node }}
+      if: ${{ inputs.setup-node == 'true' }}
       with:
         node-version: 16
         cache: pnpm
 
     - name: Configure corepack
-      if: ${{ inputs.setup-node }}
+      if: ${{ inputs.setup-node == 'true' }}
       # Forcibly upgrade our available version of corepack.
       # The bundled version in node 16 has known issues.
       # Prepends the corepack bin dir so that it is always first.
@@ -57,4 +57,4 @@ runs:
 
     - run: pnpm install
       shell: bash
-      if: ${{ inputs.setup-node }}
+      if: ${{ inputs.setup-node == 'true' }}
