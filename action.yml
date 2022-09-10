@@ -16,7 +16,6 @@ runs:
 
     - name: Set Up Protoc
       uses: arduino/setup-protoc@v1
-      shell: bash
       with:
         version: "3.x"
         repo-token: ${{ inputs.github-token }}
