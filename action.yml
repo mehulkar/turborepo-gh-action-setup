@@ -1,5 +1,9 @@
 name: "Turborepo CI Setup"
 description: "Sets up everything for CI"
+inputs:
+  github-token:
+    description: "Github token. You can pass secrets.GITHUB_TOKEN"
+    required: true
 runs:
   using: "composite"
   steps:
@@ -14,7 +18,7 @@ runs:
       uses: arduino/setup-protoc@v1
       with:
         version: "3.x"
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        repo-token: ${{ inputs.github-token }}
 
     - name: Set Up GRPC protobuf
       run: |
